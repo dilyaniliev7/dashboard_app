@@ -36,8 +36,6 @@ export default function Navbar({content}) {
       >
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
-
-
               <ListItem key={1} disablePadding>
                 <ListItemButton component={Link} to={"/"}>
                   <ListItemIcon>
@@ -55,7 +53,6 @@ export default function Navbar({content}) {
                   <ListItemText primary={"Dashboard 2"} selected={"/dashboard2" === location.pathname}/>
                 </ListItemButton>
               </ListItem>
-          </List>
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
