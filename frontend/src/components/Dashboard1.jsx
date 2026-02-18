@@ -1,5 +1,8 @@
 import {React, useState, useEffect} from 'react'
 import AxiosInstance from './Axios'
+import MyPieChart from './charts/PieChart'
+import MyChartBox from './charts/ChartBox'
+import StoreIcon from '@mui/icons-material/Store';
 
 const Dashboard1 = () => {
 
@@ -15,7 +18,15 @@ const Dashboard1 = () => {
         },[])
 
     return (
-        <div>This is the Dashboard 1 page</div>
+        <div>
+            <MyChartBox
+                icon1 = {<StoreIcon/>}
+                title1 = {"This is my title"}
+                chart1 = {<MyPieChart/>}
+            />
+
+
+        </div>
         )
     }
 
