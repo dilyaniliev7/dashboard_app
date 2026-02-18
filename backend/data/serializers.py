@@ -23,3 +23,9 @@ class SuperMarketSalesSerializer(serializers.ModelSerializer):
     class Meta:
         model = SuperMarketSales
         fields = '__all__'
+
+
+class BranchDataSerializer(serializers.Serializer):
+    id = serializers.IntegerField(source='branch')
+    label = serializers.CharField(source='branch__name')
+    value = serializers.IntegerField(source='quantity')
