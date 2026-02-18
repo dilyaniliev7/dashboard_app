@@ -21,7 +21,7 @@ const Dashboard1 = () => {
         <div>
             <MyChartBox
                 icon1 = {<StoreIcon/>}
-                title1 = {"This is my title"}
+                title1 = {"Quantities per branch"}
                 chart1 = {<MyPieChart
                             myData={myBranchData}
                             />}
