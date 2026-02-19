@@ -12,7 +12,7 @@ export default function MyPieChart({myData}) {
         },
       ]}
       sx={{
-          [`&.${pieArcLabelClasses.root}`]:{{
+          [`&.${pieArcLabelClasses.root}`]:{
               fill: 'white',
               fontSize: 14,
               }

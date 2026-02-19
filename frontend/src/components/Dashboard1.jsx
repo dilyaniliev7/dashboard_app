@@ -3,6 +3,8 @@ import AxiosInstance from './Axios'
 import MyPieChart from './charts/PieChart'
 import MyChartBox from './charts/ChartBox'
 import StoreIcon from '@mui/icons-material/Store';
+import MyDonutChart from './charts/DonutChart'
+import WcIcon from '@mui/icons-material/Wc';
 
 const Dashboard1 = () => {
 
@@ -24,6 +26,11 @@ const Dashboard1 = () => {
                 title1 = {"Quantities per branch"}
                 chart1 = {<MyPieChart
                             myData={myBranchData}
+                            />}
+
+                icon2 = {<WcIcon/>}
+                title2 = {"Quantities per Gender"}
+                chart2 = {<MyDonutChart
                             />}
             />
 
