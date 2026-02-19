@@ -35,3 +35,16 @@ class BranchDataViewSet(viewsets.ViewSet):
 
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
+
+
+class GenderDataViewSet(viewsets.ViewSet):
+    permission_classes = [permissions.AllowAny]
+    queryset = SuperMarketSales.objects.all()
+    serializer_class = GenderDataSerializer
+
+    def list(self, request):
+        queryset = SuperMarketSales.objects.values('gender', 'gender__name')\
+            .annotate(quantity=Sum('quantity'))
+
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)

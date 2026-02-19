@@ -25,8 +25,9 @@ class SuperMarketSalesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class BranchDataSerializer(serializers.Serializer):
-    id = serializers.IntegerField(source='branch')
-    label = serializers.CharField(source='branch__name')
+class GenderDataSerializer(serializers.Serializer):
+    id = serializers.IntegerField(source='gender')
+    label = serializers.CharField(source='gender__name')
     value = serializers.IntegerField(source='quantity')
-    percentage= serializers.DecimalField(max_digits=10, decimal_places=2)
+
+

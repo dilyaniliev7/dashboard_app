@@ -6,5 +6,6 @@ from .views import *
 router = DefaultRouter()
 router.register('supermarketsales', SuperMarketSalesViewSet, basename='supermarketsales')
 router.register('branchdata', BranchDataViewSet, basename='branchdata')
+router.register('genderdata', GenderDataViewSet, basename='genderdata')
 
 urlpatterns = router.urls
