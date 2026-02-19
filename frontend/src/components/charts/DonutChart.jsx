@@ -1,14 +1,8 @@
 import * as React from 'react';
-import { PieChart } from '@mui/x-charts/PieChart';
+import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
 
-const data = [
-  { value: 5, label: 'A' },
-  { value: 10, label: 'B' },
-  { value: 15, label: 'C' },
-  { value: 20, label: 'D' },
-];
 
 const size = {
   width: 200,
@@ -31,10 +25,24 @@ function PieCenterLabel({ children }) {
   );
 }
 
-export default function MyDonutChart() {
+export default function MyDonutChart({data, centerlabel}) {
   return (
-    <PieChart series={[{ data, innerRadius: 80 }]} {...size}>
-      <PieCenterLabel>Center label</PieCenterLabel>
+    <PieChart
+        series={[{
+            data,
+            innerRadius: 50,
+            arcLabel: (item) => `${item.value}`,
+            highlightScope: {faded:'global', highlighted: 'item'},
+            faded: {innerRadius: 30, additionalRadius: -30, color:'gray'}
+        }]}
+        sx={{
+          [`&.${pieArcLabelClasses.root}`]:{
+              fill: 'white',
+              fontSize: 12,
+              }
+          }}
+        {...size}>
+      <PieCenterLabel>{centerlabel}</PieCenterLabel>
     </PieChart>
   );
 }

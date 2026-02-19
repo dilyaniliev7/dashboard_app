@@ -36,6 +36,8 @@ const Dashboard1 = () => {
                 icon2 = {<WcIcon/>}
                 title2 = {"Quantities per Gender"}
                 chart2 = {<MyDonutChart
+                            data={myGenderData}
+                            centerlabel={myGenderData.reduce((sum, data) => sum + data.value,0)}
                             />}
             />
 
