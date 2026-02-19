@@ -9,10 +9,15 @@ import WcIcon from '@mui/icons-material/Wc';
 const Dashboard1 = () => {
 
     const [myBranchData, setMyBranchData] = useState([])
+    const [myGenderData, setMyGenderData] = useState([])
 
     const GetData = () => {
         AxiosInstance.get(`branchdata/`).then((res) => {
             setMyBranchData(res.data)
+            })
+
+        AxiosInstance.get(`genderdata/`).then((res) => {
+            setMyGenderData(res.data)
             })
         }
     useEffect(() => {
