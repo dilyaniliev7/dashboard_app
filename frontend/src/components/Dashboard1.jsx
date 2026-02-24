@@ -5,6 +5,8 @@ import MyChartBox from './charts/ChartBox'
 import StoreIcon from '@mui/icons-material/Store';
 import MyDonutChart from './charts/DonutChart'
 import WcIcon from '@mui/icons-material/Wc';
+import MyStackedBarChart from './charts/MyStackedBarChart'
+import CategoryIcon from '@mui/icons-material/Category';
 
 const Dashboard1 = () => {
 
@@ -39,6 +41,10 @@ const Dashboard1 = () => {
                             data={myGenderData}
                             centerlabel={myGenderData.reduce((sum, data) => sum + data.value,0)}
                             />}
+
+                icon3 = {<CategoryIcon/>}
+                title3 = {"Quantities per Productline & Branch"}
+                chart3 = {<MyStackedBarChart/>}
             />
 
 
