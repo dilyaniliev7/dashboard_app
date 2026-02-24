@@ -19,7 +19,7 @@ class SuperMarketSalesViewSet(viewsets.ViewSet):
 class BranchDataViewSet(viewsets.ViewSet):
     permission_classes = [permissions.AllowAny]
     queryset = SuperMarketSales.objects.all()
-    serializer_class = BranchDataSerializer
+    serializer_class = ProductBranchDataSerializer
 
     def list(self, request):
         total_sum = SuperMarketSales.objects.aggregate(total_quantity=Sum('quantity'))

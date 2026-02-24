@@ -17,7 +17,7 @@ export default function MyPieChart({myData}) {
               fontSize: 14,
               }
           }}
-      width={200}
+      width={400}
       height={200}
     />
   );

@@ -12,6 +12,7 @@ const Dashboard1 = () => {
 
     const [myBranchData, setMyBranchData] = useState([])
     const [myGenderData, setMyGenderData] = useState([])
+    const [myProductBranchData, setMyProductBranchData] = useState([])
 
     const GetData = () => {
         AxiosInstance.get(`branchdata/`).then((res) => {
@@ -22,9 +23,21 @@ const Dashboard1 = () => {
             setMyGenderData(res.data)
             })
         }
+
+        AxiosInstance.get(`productbranchdata/`).then((res) => {
+            setMyProductBranchData(res.data)
+            })
+        }
     useEffect(() => {
         GetData()
         },[])
+
+    const myseries = [
+    {
+          dataKey: 'quantityBranchA', label: 'Branch A', stack:"A" },
+          dataKey: 'quantityBranchB', label: 'Branch B', stack:"A" },
+          dataKey: 'quantityBranchC', label: 'Branch C', stack:"A" },
+]
 
     return (
         <div>
@@ -44,7 +57,11 @@ const Dashboard1 = () => {
 
                 icon3 = {<CategoryIcon/>}
                 title3 = {"Quantities per Productline & Branch"}
-                chart3 = {<MyStackedBarChart/>}
+                chart3 = {<MyStackedBarChart
+                    dataset={MyProductBranchData}
+                    XlabelName = {'productline__name'}
+                    series = {myseries}
+                    />}
             />
 
 
