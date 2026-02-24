@@ -91,11 +91,14 @@ export default function MyStackedBarChart() {
     month: 'Dec',
   },
 ];
-
-export function valueFormatter(value) {
-  return `${value}mm`;
-}
-
+  const data = {
+      {
+          productLine: "Health and beauty",
+          quantityBranchA: 100,
+          quantityBranchB: 200,
+          quantityBranchC: 300,
+          }
+      }
   return (
     <BarChart
       dataset={dataset}

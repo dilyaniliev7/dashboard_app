@@ -31,3 +31,8 @@ class GenderDataSerializer(serializers.Serializer):
     value = serializers.IntegerField(source='quantity')
 
 
+class ProductBranchDataSerializer(serializers.Serializer):
+    productline__name = serializers.CharField()
+    quantityBranchA = serializers.IntegerField()
+    quantityBranchB = serializers.IntegerField()
+    quantityBranchC = serializers.IntegerField()

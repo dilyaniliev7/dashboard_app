@@ -3,7 +3,7 @@ from rest_framework import viewsets, permissions
 from .serializers import *
 from .models import *
 from rest_framework.response import Response
-from django.db.models import Sum, F, Func, Value, FloatField
+from django.db.models import Sum, F, Func, Value, FloatField, IntegerField, Case, When
 from django.db.models.functions import Cast
 
 class SuperMarketSalesViewSet(viewsets.ViewSet):
@@ -46,5 +46,37 @@ class GenderDataViewSet(viewsets.ViewSet):
         queryset = SuperMarketSales.objects.values('gender', 'gender__name')\
             .annotate(quantity=Sum('quantity'))
 
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
+
+
+class ProductBranchDataViewSet(viewsets.ViewSet):
+    permission_classes = [permissions.AllowAny]
+    queryset = SuperMarketSales.objects.all()
+    serializer_class = ProductBranchDataSerializer
+
+    def list(self, request):
+        queryset = SuperMarketSales.objects.values('productline__name', 'gender__name')\
+            .annotate(quantityBranchA=Sum(
+            Case(
+                When(branch__name="A", then='quantity'),
+                default=0,
+                output_field=IntegerField()
+            )
+        )) \
+            .annotate(quantityBranchB=Sum(
+            Case(
+                When(branch__name="B", then='quantity'),
+                default=0,
+                output_field=IntegerField()
+            )
+        )) \
+            .annotate(quantityBranchC=Sum(
+            Case(
+                When(branch__name="C", then='quantity'),
+                default=0,
+                output_field=IntegerField()
+            )
+        ))
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
