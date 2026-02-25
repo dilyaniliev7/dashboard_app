@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+import calendar
 
 class SuperMarketSalesSerializer(serializers.ModelSerializer):
     gender = serializers.SlugRelatedField(
@@ -36,3 +37,14 @@ class ProductBranchDataSerializer(serializers.Serializer):
     quantityBranchA = serializers.IntegerField()
     quantityBranchB = serializers.IntegerField()
     quantityBranchC = serializers.IntegerField()
+
+
+class CountryDataSerializer(serializers.Serializer):
+    date__month = serializers.CharField()
+    quantityNetherlands = serializers.IntegerField()
+    quantityGermany= serializers.IntegerField()
+    quantityFrance = serializers.IntegerField()
+    month_name = serializers.SerializerMethodField()
+
+    def get_month_name(self, obj):
+        return calendar.month_name[obj['date__month']]
