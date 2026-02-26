@@ -10,6 +10,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import MyChartBox2 from './charts/ChartBox2';
 import MyLineChart from './charts/LineChart2';
 import PublicIcon from '@mui/icons-material/Public';
+import MyCombiChart from './charts/CombiChart';
 
 const Dashboard1 = () => {
 
@@ -54,6 +55,12 @@ const Dashboard1 = () => {
           dataKey: 'quantityGermany', label: 'Germany'},
           dataKey: 'quantityFrance', label: 'France'},
 ]
+       const myproductbranchseries = [
+    {
+          dataKey: 'quantityBranchA', label: 'Quantity Branch A', type: 'bar'},
+          dataKey: 'quantityBranchB', label: 'Quantity Branch B', type: 'line'},
+          dataKey: 'quantityBranchC', label: 'Quantity Branch C', type: 'line'},
+]
     return (
         <div>
             <MyChartBox
@@ -87,6 +94,14 @@ const Dashboard1 = () => {
                             myxaxis={"month_name"}
                             myseries={mycountryseries}
                             />}
+
+                icon2 = {<PublicIcon/>}
+                title2 = {"Quantities per Product Line per Branch"}
+                chart2 = {<MyLineChart
+                    data={MyProductBranchData}
+                    myseries={myproductbranchseries}
+                    xcolumn = {'productline__name'}
+                    />}
             />
 
         </div>
